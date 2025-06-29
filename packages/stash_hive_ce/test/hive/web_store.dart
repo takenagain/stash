@@ -1,4 +1,4 @@
-import 'package:stash_hive/stash_hive.dart';
+import 'package:stash_hive_ce/stash_hive_ce.dart';
 
 Future<HiveVaultStore> newVaultStore() {
   return Future.value(newHiveDefaultVaultStore());
