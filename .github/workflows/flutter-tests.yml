@@ -2,12 +2,12 @@ name: Flutter Tests
 
 on:
   push:
-    branches: [main, dev]
+    branches: [main, develop]
     paths:
       - 'packages/**'
       - '.github/workflows/flutter-tests.yml'
   pull_request:
-    branches: [main, dev]
+    branches: [main, develop]
     paths:
       - 'packages/**'
       - '.github/workflows/flutter-tests.yml'
