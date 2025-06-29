@@ -1,13 +1,14 @@
 import 'package:stash_sembast/stash_sembast.dart';
-import 'package:stash_sembast_web/stash_sembast_web.dart';
 import 'package:stash_test/stash_test.dart';
+
+import 'vm_store.dart' if (dart.library.js) 'web_store.dart';
 
 class VaultStoreContext extends VaultTestContext<SembastVaultStore> {
   VaultStoreContext(super.generator);
 
   @override
   Future<SembastVaultStore> newStore() {
-    return newSembastWebVaultStore();
+    return newVaultStore();
   }
 }
 
@@ -16,7 +17,7 @@ class CacheStoreContext extends CacheTestContext<SembastCacheStore> {
 
   @override
   Future<SembastCacheStore> newStore() {
-    return newSembastWebCacheStore();
+    return newCacheStore();
   }
 }
 
