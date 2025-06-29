@@ -69,7 +69,7 @@ scripts:
 
   test:
     description: Run `dart test` in vm, chrome and flutter in the selected packages
-    run: melos run test:vm && melos run test:chrome && melos run test:flutter
+    run: melos run install && melos run test:vm && melos run test:chrome && melos run test:flutter
   
   test:vm:
     description: Run `dart test -p vm` in the selected packages.
@@ -91,7 +91,7 @@ scripts:
 
   coverage:
     description: Run `dart test` in vm and chrome and collects coverage.
-    run: melos run coverage:vm && melos run coverage:chrome && melos run coverage:flutter
+    run: melos run install && melos run coverage:vm && melos run coverage:chrome && melos run coverage:flutter
 
   coverage:vm:
     description: Run `dart test -p vm` in the selected packages and collects coverage.
