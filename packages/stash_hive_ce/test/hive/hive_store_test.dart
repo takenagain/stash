@@ -1,4 +1,4 @@
-import 'package:stash_hive/stash_hive.dart';
+import 'package:stash_hive_ce/stash_hive_ce.dart';
 import 'package:stash_test/stash_test.dart';
 
 import "vm_store.dart" if (dart.library.js) "web_store.dart";
