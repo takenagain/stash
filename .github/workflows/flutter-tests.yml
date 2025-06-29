@@ -1,0 +1,63 @@
+name: Flutter Tests
+
+on:
+  push:
+    branches: [main, develop]
+    paths:
+      - 'packages/**'
+      - '.github/workflows/flutter-tests.yml'
+  pull_request:
+    branches: [main, develop]
+    paths:
+      - 'packages/**'
+      - '.github/workflows/flutter-tests.yml'
+
+jobs:
+  test:
+    name: Flutter Test
+    strategy:
+      fail-fast: false
+      matrix:
+        package:
+          - stash
+          - stash_cbl
+          - stash_dio
+          - stash_file
+          - stash_hive
+          - stash_hive_ce
+          - stash_isar
+          - stash_memory
+          - stash_objectbox
+          - stash_secure_storage
+          - stash_sembast
+          - stash_sembast_web
+          - stash_shared_preferences
+          - stash_sqlite
+          - stash_test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Install libraries
+        run: |
+          sudo apt-get update
+          sudo apt-get install libsqlite3-dev -y
+          bash <(curl -s https://raw.githubusercontent.com/objectbox/objectbox-dart/main/install.sh)
+
+      - name: Set up flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          flutter-version: 3.32.5
+
+      - name: Checkout sources
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          cd packages/${{ matrix.package }}
+          flutter pub get
+
+      - name: Run tests
+        run: |
+          cd packages/${{ matrix.package }}
+          flutter test
