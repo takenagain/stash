@@ -66,10 +66,10 @@ class CblAdapter {
         ? await Database.openAsync(name, configuration)
         : Database.openSync(name, configuration);
 
-    _keysQueries[name] = await Query.fromN1ql(database, _keysQuery);
-    _allEntriesQueries[name] = await Query.fromN1ql(database, _allEntriesQuery);
+    _keysQueries[name] = await database.createQuery(_keysQuery);
+    _allEntriesQueries[name] = await database.createQuery(_allEntriesQuery);
     _filteredEntriesQueries[name] =
-        await Query.fromN1ql(database, _filteredEntriesQuery);
+        await database.createQuery(_filteredEntriesQuery);
   }
 
   Database? database(String name) => _databases[name];
